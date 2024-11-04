@@ -1,0 +1,51 @@
+clip-path - allows you to make different geometric shapes in css
+
+animations: (2 ways)
+1. @keyframes allows you to animate elements at different parts of the animations
+  - requires name
+    Ex: @keyframes moveInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+
+    80% {
+      transform: translateX(10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  - then you can add it to an element with animation-name:
+    Ex: animation-name: moveInLeft
+  - animation-duration is how long it is animated for. (in seconds)
+  - animation-delay is delays the animation by the time given. (in seconds)
+  - animation-iteration-count is how many times the animation happens
+  - animation-timing-function is how the animation will happen over the course of the animation
+  - animation-fill-mode applies css styles from the keyframes
+
+2. transition must property on the initial state
+  Ex: 
+  .btn:link,
+  .btn:visited {
+    transition: all 0.2s;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+  }
+
+  .btn:active {
+    transform: translateY(-1px);
+  }
+  - any effect is always in relation to the initial state
+
+  - if animation is a little shaky, add backface-visibility: hidden to remove the shake
+
+-inline-block elements are treated as text so they are able to be used with text-align: center, etc
+
+- psuedo elements:
+  - must have content and display properties
+  - treated as a child of the element its used on
