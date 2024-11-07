@@ -1,0 +1,68 @@
+Three pillars of good HTML and CSS: 
+  1. Responsive design
+    - fluid layouts
+    - media queries
+    - responsice images
+    - correct units
+    - desktop first vs mobile first
+
+  2. Maintainable and scalable code
+    - clean
+    - easy to understand
+    - growth
+    - reusable
+    - how to orbanize files
+    - how to name classes
+    - how to structure HTML
+
+  3. Web performance
+    - less HTTP requests
+    - less code
+    - compress code
+    - use a CSS preprocessor
+    - less images
+    - compress images
+
+CSS process when loading up a page:
+  HTML:
+  - loads HTML
+  - parses HTML
+  - HTML is loaded and creates DOM
+  CSS:
+  - CSS is loaded while HTML is being parsed
+  - CSS is parsed 
+    - resolves conflicting CSS declarations (cascade)
+    - process final CSS values (percentages, rems, etc)
+  - CSS is loaded and creates CSS object model (CSSOM)
+
+  - with HTML and CSS loaded, the render tree is created
+  - website rendering: visual formatting model
+  - final rendered website
+
+CSS Parsing:
+1. Importance:
+  - User !important declarations
+  - Author !important declarations
+  - Author declarations
+  - User declarations
+  - Default browser declarations
+- If imporatance is the same, go to specificity
+
+2. Specificity:
+  - Inline styles
+  - IDs
+  - Classes, psuedo classes, attributes
+  - Elements, psuedo elements
+- If specificity is the same, go to source order
+
+3. Source order (cascade)
+  - the last declaration in the code will override all other declarations and will be applied
+
+Unit conversion from relative to absolute (px):
+- % (fonts): declared value * parents computed font size
+- % (lengths): declared value * parents computed width
+- em (fonts): declared value * parents computed font size
+- em (lenghts): declared value * current element computed font size
+- rem: declared value * root computed font size
+- vh: declared value * 1% of viewport height
+- vw: declared value * 1% of viewport width
