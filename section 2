@@ -11,7 +11,7 @@ Three pillars of good HTML and CSS:
     - easy to understand
     - growth
     - reusable
-    - how to orbanize files
+    - how to organize files
     - how to name classes
     - how to structure HTML
 
@@ -46,7 +46,7 @@ CSS Parsing:
   - Author declarations
   - User declarations
   - Default browser declarations
-- If imporatance is the same, go to specificity
+- If importance is the same, go to specificity
 
 2. Specificity:
   - Inline styles
@@ -66,3 +66,35 @@ Unit conversion from relative to absolute (px):
 - rem: declared value * root computed font size
 - vh: declared value * 1% of viewport height
 - vw: declared value * 1% of viewport width
+
+- root font size should be set in html css block
+
+Visual Formatting Model (VFM)
+- Algorithm that calculates boxes and determines the layouts of these boxes, for each element in the render tree, in order to determine the final layout of the page
+- to create the VFM, it takes into account:
+  - dimensions of the boxes (box model)
+  - box type (inline, block, inline block)
+  - positioning scheme (floats and positioning)
+  - stacking contexts
+  - other elements in the render tree
+  - viewport size, dimensions of images, etc
+
+BEM:
+- stands for Block Element Modifier
+- organized way to use CSS class names
+- Block: standalone component that is meaningful on its own
+- Element: part of a block that has no standalone meaningful
+- Modifier: a different version of a block or an element
+- block__element--modifier
+
+7-1 Pattern:
+- 7 different folders for partial Sass (or any CSS preprocessor) files and 1 main Sass file to import all other files into a compiled CSS stylesheet
+7 folders:
+  - base
+  - components
+  - layouts
+  - pages
+  - themes
+  - abstaracts
+  - vendors
+   
