@@ -1,0 +1,70 @@
+Variables:
+- works just like js variables
+- starts with $
+Ex: 
+$color-white: #fff;
+
+nav {
+  background-color: $color-white;
+}
+
+Mixins:
+- reuseable piece of code
+- @mixin followed by the variable name for the code
+- @include followed by the variable name to use the code
+Ex: 
+@mixin clearfix {
+  &::after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}
+
+nav {
+  @include clearfix;
+}
+
+- can use arguments, that begin with $, when needed
+Ex:
+@mixin text-style($color) {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color;
+}
+
+nav {
+  @include text-style(#eee)
+}
+
+Functions: 
+- works just like functions in JS
+- keywords begin with @
+- arguments begin with $
+Ex:
+@function divide($a, $b) {
+  @return $a / $b
+}
+
+Extends:
+- like a mixin but is really only used for components that are similar to each other
+- initial declaration starts with %
+- add @extend keyword when using
+Ex: 
+%btn-placeholder {
+  border-radius: 100px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.btn-main:link {
+  @extend %btn-placeholder;
+  background-color: blue;
+}
+
+.btn-secondary:link{
+  @extend %btn-placeholder;
+  background-color: black;
+}
+
+- mixins are usually preferred but when two components are closely similary, extends work well
