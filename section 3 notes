@@ -85,22 +85,28 @@ BEM:
 - Block: standalone component that is meaningful on its own
 - Element: part of a block that has no standalone meaningful
 - Modifier: a different version of a block or an element
-- block__element--modifier
+- syntax: block__element--modifier
 
 7-1 Pattern:
 - 7 different folders for partial Sass (or any CSS preprocessor) files and 1 main Sass file to import all other files into a compiled CSS stylesheet
 7 folders:
-  - base
-  - components
-  - layouts
-  - pages
+  - base: basic code for page. resets, typography, etc
+  - components: used for components (resuseable building blocks) of the page
+  - layout: global layout folder. footer, header, etc
+  - pages: where specific pages go
   - themes
-  - abstaracts
-  - vendors
+  - abstracts: code that doesnt output css. variables, mixins, etc
+  - vendors: third party css files. bootstrap, etc
+
+- files should start with an underscore
+Ex: _base.scss
+- then import those files into the main scss file with @import
+  - doesnt need the underscore or file type when importing
+Ex: @import "base/animations"
 
 Sass vs SCSS
-- difference is the syntax. 
-  - SCSS uses brackets and indentation
+- difference is the syntax
+  - SCSS uses brackets and indentation (preferred)
   .nav {
     color: blue;
 
@@ -108,6 +114,7 @@ Sass vs SCSS
       color: white;
     }
   }
+
   - Sass only uses indentation
   .nav
     color: blue;

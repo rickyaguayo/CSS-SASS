@@ -1,0 +1,30 @@
+Basic responsive design principles:
+
+1. Fluid Layouts
+  - to allow webpage to adapt to the current viewport width/height
+  - use %, vh, or vw instead of px for elements that should adapt to viewport
+  - use max-width instead of width
+  - 3 types:
+    1. Float layouts: old way of building layouts of all sizes using the float CSS property. Pretty outdated
+    2. Flexbox: Modern way of laying out elements in a 1D row without using floats. Perfect for component layouts
+    3. CSS Grid: For laying out element in a fully-fledged 2D grid. PErfect for page layouts and complex components
+
+
+2. Responsive Units
+  - use rem instead of px for most lengths
+  - to make it easy to scale the entire layout down or up automatically
+
+3. Flexible Images
+  - by default, images dont scale automatically as we change the viewport, so we need to fix that
+  - always use % for image dimensions together with the max-width property
+
+4. Media Queries
+  - to change CSS styles on certain viewport widths (breakpoints)
+
+calc() - powerful CSS function that allows you to to calculations in CSS
+  - in regular CSS, you cannot mix units when doing calculations but you can in sass because sass is later compiled
+  - if using a variable in calculations, you must wrap it in #{}
+  Ex: 
+  .row {
+    width: calc((100% - #{gutter-horizontal}) / 2)
+  }

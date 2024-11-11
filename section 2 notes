@@ -26,7 +26,7 @@ animations: (2 ways)
   - animation-timing-function is how the animation will happen over the course of the animation
   - animation-fill-mode applies css styles from the keyframes
 
-2. transition must property on the initial state
+2. transition property must be on the initial state
   Ex: 
   .btn:link,
   .btn:visited {
