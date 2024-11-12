@@ -28,3 +28,6 @@ calc() - powerful CSS function that allows you to to calculations in CSS
   .row {
     width: calc((100% - #{gutter-horizontal}) / 2)
   }
+
+- background-clip: determines where the elements background extends
+  - with background-clip: text; paired with color: transparent; you can use an image, linear gradient, etc as the text color
