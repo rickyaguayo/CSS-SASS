@@ -6,7 +6,7 @@ Flexbox:
 
 - to make something flex, give it display: flex;
 - that element will become the flex container and all its direct children will become flex items
-- the default main axis is horizontal and the vertical axis is called the cross axis
+- the default main axis is horizontal and the vertical axis is called the cross axis (this flips if flex-direction: column)
 
 Flex container properties:
 - flex-direction: allows you to change which direction the main axis is. (default is row)
@@ -15,13 +15,16 @@ Flex container properties:
 - flex-wrap: determines if the flex items is allowed to go to a new row (default is nowrap)
 - justify-content: determines where the flex items are positioned along the main axis (default is flex-start)
 - align-items: determines where the flex items are positioned along the cross axis (default is stretch)
-  - setting align-items to baseline will allow the bottom of text to line up evenly. despite different sizes of text
+  - setting align-items to baseline will allow the bottom of text to line up evenly despite different sizes of text
 - align-content: if there are more than one row of flex items, this determines how they are aligned along the cross axis (default is stretch)
+- flex also works to align text
 
 Flex items properties:
 - align-self: similar to align-items but for an individual item (default is auto)
 - order: defines specific order for item (default is 0)
-  - the default is for every flex item. if there are 4 items, they will all have order: 0; by default unless otherwise specified. (works like z-index)
+  - the default is 0 for every flex item. 
+  - if there are 4 items, they will all have order: 0; by default unless otherwise specified. (works like z-index)
+    - if one of the items has -1 it will be first or if it has 1 it will be last
 - flex-grow: allows you to decide how much the item can grow (default is 0)
   - number given is the multiplier for the distributed free space given
 - flex-shrink: allows you to decide how much the item can shrink (default is 1)
@@ -29,3 +32,34 @@ Flex items properties:
 - flex-basis: determines the base width of an item (default is auto)
   - even when this is given a px unit, it can still act responsively when flex-shrink is 1
 - flex is a shorthand for the three properties above. flex: 0 1 auto; (flex-grow flex-shrink flex-basis)
+
+CSS variables (custom properties):
+- variables inside of css without a preprocessor
+- can be manipulated by js
+- css variables cascade and are inherited
+- must be within a scope (declaration block). usually the :root psuedo class
+- :root - psuedo class with higher specificity than html used to add css variables that are available throughout the document
+- starts with --
+  Ex: --color-primary: #eb2f64;
+- to use, wrap it in var()
+  Ex: color: var(--color-primary);
+
+- SVG: scalable vector graphic
+  - better than using icon fonts because icon fonts are considered a hack and can fail. having svgs is more reliable
+  - easier to format. usually just needs height/width. fill for color
+- sprite file: file that holds a bundle of svg images. helps to have one file (and one http request) instead of having one per svg
+- to use svg/sprite files:
+  - <svg> tag wrapping a <use> tag
+  - to use the sprite file with the svg, the <use> tag must have the xlink:href attribute. inside this, reference the sprite file path then the svg separated by a #
+  Ex: 
+  <svg>
+    <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+  </svg>
+  - this only works on a web server
+
+
+
+
+
+  MISC NOTES:
+  - input elements do not inherit the font properties from the global styles from the document
