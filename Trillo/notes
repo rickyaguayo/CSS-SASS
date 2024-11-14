@@ -1,0 +1,31 @@
+Flexbox:
+- makes it easy to align elements to one another, in different directions and order
+- main idea behind flexbox is to allow elements to shrink and expand in the available space
+- replaces float layouts, uses less, more readable and logical code
+- changes how we build 1D layouts
+
+- to make something flex, give it display: flex;
+- that element will become the flex container and all its direct children will become flex items
+- the default main axis is horizontal and the vertical axis is called the cross axis
+
+Flex container properties:
+- flex-direction: allows you to change which direction the main axis is. (default is row)
+  - row/column reverse not only changes the direction but the starting point as well. 
+  - for example: row-reverse will reverse the items order (right to left) and start the whole row on the right side of the screen rather than the left
+- flex-wrap: determines if the flex items is allowed to go to a new row (default is nowrap)
+- justify-content: determines where the flex items are positioned along the main axis (default is flex-start)
+- align-items: determines where the flex items are positioned along the cross axis (default is stretch)
+  - setting align-items to baseline will allow the bottom of text to line up evenly. despite different sizes of text
+- align-content: if there are more than one row of flex items, this determines how they are aligned along the cross axis (default is stretch)
+
+Flex items properties:
+- align-self: similar to align-items but for an individual item (default is auto)
+- order: defines specific order for item (default is 0)
+  - the default is for every flex item. if there are 4 items, they will all have order: 0; by default unless otherwise specified. (works like z-index)
+- flex-grow: allows you to decide how much the item can grow (default is 0)
+  - number given is the multiplier for the distributed free space given
+- flex-shrink: allows you to decide how much the item can shrink (default is 1)
+  - 1 means the element is allowed to shrink and act responsively. 0 doesnt let the element to shrink
+- flex-basis: determines the base width of an item (default is auto)
+  - even when this is given a px unit, it can still act responsively when flex-shrink is 1
+- flex is a shorthand for the three properties above. flex: 0 1 auto; (flex-grow flex-shrink flex-basis)
