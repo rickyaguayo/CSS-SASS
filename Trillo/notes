@@ -44,7 +44,7 @@ CSS variables (custom properties):
 - to use, wrap it in var()
   Ex: color: var(--color-primary);
 
-- SVG: scalable vector graphic
+SVG: scalable vector graphic
   - better than using icon fonts because icon fonts are considered a hack and can fail. having svgs is more reliable
   - easier to format. usually just needs height/width. fill for color
 - sprite file: file that holds a bundle of svg images. helps to have one file (and one http request) instead of having one per svg
@@ -56,6 +56,28 @@ CSS variables (custom properties):
     <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
   </svg>
   - this only works on a web server
+  - svgs, by default, are inline elements that act like text. therefore, they have a bit of line-height attached to them. this may cause them to not align perfectly with other flex siblings. In order to fix this, make the parent of the svgs a flex container
+
+- currentColor: uses the same value from the element's color attribute 
+  Ex: div {
+    color: red;
+    border: 1px solid currentColor; (border will be red)
+  }
+  - if the color attribute isnt defined in the block, it will then inherit from its parent
+  - works well with hover effects
+  Ex: 
+  .link {
+    color: #fff;
+  }
+
+  .link:hover {
+    color: blue;
+  }
+
+  .link-child {
+    color: currentColor; 
+  }
+  - link-child will also change to blue on hover without having to write an extra hover block because of currentColor
 
 
 
@@ -63,3 +85,6 @@ CSS variables (custom properties):
 
   MISC NOTES:
   - input elements do not inherit the font properties from the global styles from the document
+  - z-index only works if it has a position specified (cant be default aka static)
+  - images should always block or inline-block
+  - with flexbox, margin: auto; allows you to create space without stretching the element
