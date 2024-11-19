@@ -48,4 +48,38 @@ calc() - powerful CSS function that allows you to to calculations in CSS
     background-blend-mode: screen;
   }
 
-- box-decoration-break: specifies how an elements fragments should be rendered when broken across multiple lines, columns, and pages.
+- box-decoration-break: specifies how an elements fragments should be rendered when broken across multiple lines, columns, and pages
+
+- shape-outside: defines where the content floats around an element
+  - must be used with float
+  - must have a defined height/width
+  - cannot be used with Flexbox
+  syntax: shape-outside: circle(50% at 50% 50%)
+    - first number is for radius
+    - second is x coordinate
+    - third is y coordinate
+  Ex: .text {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+  }
+
+- video html element allows you to add a video to your site
+  - has keywords for controls like autoplay, muted, loop, etc
+  - should use multiple source elements inside to account for most browsers with src and type attributes
+    - src attribute shouldnt go in the video tag
+  - should also add text in case the video cannot load
+  Ex: 
+  <video class="bg-video__content" autoplay muted loop>
+    <source src="img/video.mp4" type="video/mp4">
+    <source src="img/video.webm" type="video/webm">
+    Your browser is not supported
+  </video>
+
+- object-fit: helps html elements fit into its container like background-size
+
+
+MISC NOTES:
+- best way to move a floated element around is transform: translate(); rather than margins or paddings
