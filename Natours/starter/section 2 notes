@@ -43,6 +43,7 @@ animations: (2 ways)
   - any effect is always in relation to the initial state
 
   - if animation is a little shaky, add backface-visibility: hidden to remove the shake
+  - doesnt work on background images or gradients
 
 -inline-block elements are treated as text so they are able to be used with text-align: center, etc
 

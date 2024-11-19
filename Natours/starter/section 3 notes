@@ -2,7 +2,7 @@ Three pillars of good HTML and CSS:
   1. Responsive design
     - fluid layouts
     - media queries
-    - responsice images
+    - responsive images
     - correct units
     - desktop first vs mobile first
 
@@ -81,7 +81,7 @@ Visual Formatting Model (VFM)
 
 BEM:
 - stands for Block Element Modifier
-- organized way to use CSS class names
+- organized way to name CSS classes
 - Block: standalone component that is meaningful on its own
 - Element: part of a block that has no standalone meaningful
 - Modifier: a different version of a block or an element

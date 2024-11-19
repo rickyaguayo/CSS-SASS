@@ -4,11 +4,10 @@ Basic responsive design principles:
   - to allow webpage to adapt to the current viewport width/height
   - use %, vh, or vw instead of px for elements that should adapt to viewport
   - use max-width instead of width
-  - 3 types:
+  - 3 types of layouts:
     1. Float layouts: old way of building layouts of all sizes using the float CSS property. Pretty outdated
     2. Flexbox: Modern way of laying out elements in a 1D row without using floats. Perfect for component layouts
-    3. CSS Grid: For laying out element in a fully-fledged 2D grid. PErfect for page layouts and complex components
-
+    3. CSS Grid: For laying out element in a fully-fledged 2D grid. Perfect for page layouts and complex components
 
 2. Responsive Units
   - use rem instead of px for most lengths
@@ -31,3 +30,22 @@ calc() - powerful CSS function that allows you to to calculations in CSS
 
 - background-clip: determines where the elements background extends
   - with background-clip: text; paired with color: transparent; you can use an image, linear gradient, etc as the text color
+
+- perspective: determines the distance between the z plane and the user
+  - the smaller, the closer the element will appear
+
+- to merge to background images in css, use background-image and put both images separated by a comma. 
+  - background-blend-mode helps to blend the two in different ways
+  - gradients are considered background images so you can use these to blend as well
+  Ex:
+  .bg {
+    background-image: linear-gradient(
+        to right bottom,
+        $color-secondary-light,
+        $color-secondary-dark
+      ),
+      url(../img/nat-5.jpg);
+    background-blend-mode: screen;
+  }
+
+- box-decoration-break: specifies how an elements fragments should be rendered when broken across multiple lines, columns, and pages.
