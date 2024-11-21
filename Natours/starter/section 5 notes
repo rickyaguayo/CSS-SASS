@@ -34,7 +34,7 @@ calc() - powerful CSS function that allows you to to calculations in CSS
 - perspective: determines the distance between the z plane and the user
   - the smaller, the closer the element will appear
 
-- to merge to background images in css, use background-image and put both images separated by a comma. 
+- to merge two background images in css, use background-image and put both images separated by a comma. 
   - background-blend-mode helps to blend the two in different ways
   - gradients are considered background images so you can use these to blend as well
   Ex:
@@ -53,7 +53,7 @@ calc() - powerful CSS function that allows you to to calculations in CSS
 - shape-outside: defines where the content floats around an element
   - must be used with float
   - must have a defined height/width
-  - cannot be used with Flexbox
+  - cannot be used with flexbox
   syntax: shape-outside: circle(50% at 50% 50%)
     - first number is for radius
     - second is x coordinate
@@ -68,18 +68,40 @@ calc() - powerful CSS function that allows you to to calculations in CSS
 
 - video html element allows you to add a video to your site
   - has keywords for controls like autoplay, muted, loop, etc
-  - should use multiple source elements inside to account for most browsers with src and type attributes
-    - src attribute shouldnt go in the video tag
+  - should use multiple source elements inside to account for most browsers with src and type attributes (src attribute shouldnt go in the video tag)
   - should also add text in case the video cannot load
   Ex: 
   <video class="bg-video__content" autoplay muted loop>
     <source src="img/video.mp4" type="video/mp4">
     <source src="img/video.webm" type="video/webm">
-    Your browser is not supported
+    Your browser is not supported!
   </video>
 
 - object-fit: helps html elements fit into its container like background-size
 
+- solid color gradient: creating an abrupt gradient using linear gradient.
+  Ex: 
+  .book {
+    background-image: linear-gradient(
+        105deg,
+        rgba($color-white, 0.9) 49.9%,
+        transparent 50%
+      ),
+      url(../img/nat-10.jpg);
+  }
+  - this creates a solid white diagonal left side and abruptly changes to transparent. so there is no real gradient, but calls for a cool effect.
+
+- :invalid psuedo class allows you to adjust stylings when a form input is invalid
+  - must be placed on the focus state
+  Ex: input:focus:invalid {
+    border: 1px solid red;
+  }
+- :placeholder will let you style the placeholder text of an input
+- :placeholder-shown will let you style the input itself while showing the placeholder
+
 
 MISC NOTES:
 - best way to move a floated element around is transform: translate(); rather than margins or paddings
+- background-size: can also take numbers
+  Ex: background-size: 75%;
+- position: absolute doesnt NEED to have its parent be relative, the position just has to be specified. relative is just usually recommended
