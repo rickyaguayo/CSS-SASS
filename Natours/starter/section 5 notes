@@ -4,8 +4,8 @@ Basic responsive design principles:
   - to allow webpage to adapt to the current viewport width/height
   - use %, vh, or vw instead of px for elements that should adapt to viewport
   - use max-width instead of width
-  - 3 types of layouts:
-    1. Float layouts: old way of building layouts of all sizes using the float CSS property. Pretty outdated
+  - Three types of layouts:
+    1. Float layouts: old way of building layouts of all sizes using the float CSS property. Mostly outdated
     2. Flexbox: Modern way of laying out elements in a 1D row without using floats. Perfect for component layouts
     3. CSS Grid: For laying out element in a fully-fledged 2D grid. Perfect for page layouts and complex components
 
@@ -104,4 +104,4 @@ MISC NOTES:
 - best way to move a floated element around is transform: translate(); rather than margins or paddings
 - background-size: can also take numbers
   Ex: background-size: 75%;
-- position: absolute doesnt NEED to have its parent be relative, the position just has to be specified. relative is just usually recommended
+- position: absolute doesnt NEED to have its parent be relative, the position just has to be specified. relative is  usually recommended
