@@ -98,6 +98,7 @@ calc() - powerful CSS function that allows you to to calculations in CSS
   }
 - :placeholder will let you style the placeholder text of an input
 - :placeholder-shown will let you style the input itself while showing the placeholder
+- :target - can add styles when an element is clicked/linked with an id
 
 
 MISC NOTES:
