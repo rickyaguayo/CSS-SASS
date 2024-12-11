@@ -1,0 +1,65 @@
+- media queries dont add any importance or specificity so order matters
+  - when coding for desktop first, put the bigger breakpoints first so that order will take place when going to lower breakpoints.
+  - opposite for mobile first
+
+Desktop First:
+- when writing desktop first media queries, use max-width
+
+Mobile First:
+- when writing mobile first media queries, use min-width
+  - we want to stay away from small screen size styles which is why we use min-width. all they styles are used to accomodate bigger screens
+- Pros:
+  - 100% optimized for mobile experience
+  - Reduces websites and apps to absolute essentials
+  - Results in smaller, faster and more efficient products
+  - Prioritizes content over aesthetic design 
+- Cons: 
+  - desktop version might feel overly empty and simplistic
+  - More difficult and counterintuitive
+  - less creative freedom making it more difficult to create distinctive products
+  - Clients are user to seeing a desktop version of the site as a prototype
+  - Do your users even use the mobile internet? whats the purpose of your website
+
+Selecting Breakpoints:
+- Bad way: choosing breakpoints for screen sizes for popular devices
+  - bad because there are other people who use not popular devices
+  - this is not future proof as the popular devices go out of style quickly
+
+- Good way: look at all the most used device widths and group them in a logical way and choose breakpoints from that
+
+- Perfect way: ignore device widths and choose breakpoints based on where your design breaks
+  - most difficult way
+
+@content: a way of passing a block of code (styles) into a mixin
+  - like the children keyword in React
+  Ex: 
+  @mixin respond-phone {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+
+  @include respond-phone {
+    font-size: 50%
+  }
+
+@if/@else: works same as JS if/else statements
+
+- em/rem in media queries arent based off the root font size. they are based off the browser default (16px)
+  - em is best for media queries because rems dont work well within them
+  - divide 16 by the breakpoint and use that inside the media query
+  Ex: 
+  @mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+      @media (max-width: 37.5em) {
+        @content;
+      }
+    }
+  }
+  - the max-width is 600px(intended breakpoint) divided by 16px(default browser font size)
+
+Order for making media queries:
+  1. base + typography
+  2. general layout + grid
+  3. page layout
+  4. components
