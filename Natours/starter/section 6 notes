@@ -63,3 +63,9 @@ Order for making media queries:
   2. general layout + grid
   3. page layout
   4. components
+
+RESPONSIVE IMGES
+- Resolution switching: serving up the same image but the resolution size depends on the screen size
+- Density switching: serving up the same image but with different resolution depending on the screen pixel density 
+  - Pixel Density: amount of pixels found in an inch or centimeter
+- Art Direction: using a different image for smaller screen that keeps the main details. Ex: on a bigger screen the main details are centered but on a phone the main details may be on the side to fit text
