@@ -1,5 +1,5 @@
 - media queries dont add any importance or specificity so order matters
-  - when coding for desktop first, put the bigger breakpoints first so that order will take place when going to lower breakpoints.
+  - when doing desktop first, put the bigger breakpoints first so that they will be shown when going to lower breakpoints.
   - opposite for mobile first
 
 Desktop First:
@@ -17,7 +17,7 @@ Mobile First:
   - desktop version might feel overly empty and simplistic
   - More difficult and counterintuitive
   - less creative freedom making it more difficult to create distinctive products
-  - Clients are user to seeing a desktop version of the site as a prototype
+  - Clients are used to seeing a desktop version of the site as a prototype
   - Do your users even use the mobile internet? whats the purpose of your website
 
 Selecting Breakpoints:
@@ -64,8 +64,31 @@ Order for making media queries:
   3. page layout
   4. components
 
-RESPONSIVE IMGES
+RESPONSIVE IMAGES
 - Resolution switching: serving up the same image but the resolution size depends on the screen size
+  - switches between images with srcset and intrinsic file size and sizes attribute
+  - sizes attribute has the media condition and how much space the image will take up on the webpage. (percentages does not work here)
+  - size without condition is the default if none of the conditions are true
+  - Ex: <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w," 
+             sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px" 
+             alt="Photo 1">
+
 - Density switching: serving up the same image but with different resolution depending on the screen pixel density 
   - Pixel Density: amount of pixels found in an inch or centimeter
+  - density switching is used by using the srcset attribute and listing different images with x-descriptors to describe the resolution
+  - Ex: <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" media="(max-width: 37.5em)">
+
 - Art Direction: using a different image for smaller screen that keeps the main details. Ex: on a bigger screen the main details are centered but on a phone the main details may be on the side to fit text
+- make sure there is a default image src in case the browser cannot process the srcset
+
+Graceful degradation: if newer css features are being used that dont work in older browsers/versions then a good adaptation for these older browsers/versions are good practice
+
+Build process: (see package.json for npm scripts for each step)
+  - Compilation: main.css -> style.comp.css 
+  - Concatenation: style.comp.css -> style.concat.css (adds icon-font.css)
+  - Prefixing: style.concat.css (adds icon-font.css) -> style.prefix.css 
+  - Compressing: style.prefix.css -> style.css 
+
+::selection allows you to style when selecting text with your mouse
+- adding only screen to media queries is best practice. means that the styles will only apply on screens (not print, etc)
+- when coding for touch devices, its important to add (hover: none) or (hover: hover) so that the browser can tell when you are using a touch screen or not. That way the styles used for tablets/phone can be applied outside the device width
