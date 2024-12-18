@@ -368,8 +368,8 @@ body {
   .btn__visible {
     padding: 2rem 7.5rem; }
   .btn__invisible {
-    position: absolute;
     padding: 2rem 0;
+    position: absolute;
     left: 0;
     top: -100%; }
   .btn:hover {

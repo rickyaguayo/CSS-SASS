@@ -16,7 +16,7 @@ Flex container properties:
 - justify-content: determines where the flex items are positioned along the main axis (default is flex-start)
 - align-items: determines where the flex items are positioned along the cross axis (default is stretch)
   - setting align-items to baseline will allow the bottom of text to line up evenly despite different sizes of text
-  - having the default as stretch means that all the elements will match the height of the tallest element unless another height is predefined on an element
+  - having the default as stretch means that all the elements will match the height of the tallest element unless a height is defined on another element
 - align-content: if there are more than one row of flex items, this determines how they are aligned along the cross axis (default is stretch)
 - flex can also align text
 
@@ -89,7 +89,7 @@ Ex:
 .list-icon {
   background-color: #eb2f64;
   mask-img: url(../img/chevron-thin-right.svg);
-  maski-size: cover;
+  mask-size: cover;
 }
 - this will first add a pink box, then the mask is the image (a chevron with a white background) so the final product will be a pink chevron with a white background
 - the chevron is initially black, but with the mask, it becomes transparent and takes the pink color because of the bg color.
