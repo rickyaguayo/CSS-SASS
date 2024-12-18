@@ -46,6 +46,7 @@ CSS variables (custom properties):
   Ex: --color-primary: #eb2f64;
 - to use, wrap it in var()
   Ex: color: var(--color-primary);
+- these variables do not work within media query conditionals
 
 SVG: scalable vector graphic
 - better than using icon fonts because icon fonts are considered a hack and can fail. having svgs is more reliable
