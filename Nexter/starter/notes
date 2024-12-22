@@ -21,7 +21,7 @@ CSS GRID:
       - Ex: grid-template-rows: repeat(2, 100px); (2 rows that are 100px each)
     - additional columns/rows can be added at different widths by listing more after the repeat
       - Ex: grid-template-columns: repeat(2, 150px) 300px; (2 columns at 150px and 1 at 300px)
-  - fr: fractional unit. like flex: 1; it can occupy the remainder of space within rows/columns
+  - fr: fractional unit. like flex: 1; it can occupy the remaining space within rows/columns
     - Ex: grid-template-rows: repeat(2, 100px) 1fr; 
     - this will create 2 rows at 100px and one row that will take up whatever remaining space available in the parent container
   - gap: allows you to define the width of the gaps
@@ -44,7 +44,7 @@ CSS GRID:
   - grid-column: shorthand for grid-column-start and grid-column-end
     - Ex: grid-column: 2 / 3; (same as above)
   - grid-area: shorthand for grid-row and grid-column
-    - syntax is grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end
+    - syntax: grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end
     - Ex: grid-area: 2 / 2 / 3 / 3; (same as above)
     - kinda confusing syntax
 
@@ -52,3 +52,36 @@ CSS GRID:
     - Ex: grid-row: 1 / span 2; (same as grid-row: 1 / 3)
   - using -1 spans to the end of the column/row without knowing how many columns/rows there are
     - Ex: grid-column: 1 / -1; (starts in the first column and spans to the end)
+
+Naming grid lines: 
+- adding names a name surrounded by brackets inside grid-template-column/row names the grid lines
+- grid lines can have more than one name. must be within the same brackets and separated by a space
+  - Ex: grid-template-column: [header-start] 100px [header-end footer-start] 200px [footer-end]
+- when using repeat(), you can add names by putting the name inside the repeat function around the width value of the column/row
+- Ex: grid-template-column: repeat(3, [col-start] 1fr [col-end]), 200px [grid-end];
+  - this creates a nameset with numbers:
+    - col-start 1, col-start 2, col-start 3
+    - col-end 1, col-end 2, col-end 3
+    - Ex: .header { grid-column: col-start 1 / grid-end; }
+
+Naming grid areas:
+- with the grid-template-areas attribute, you can name areas to place where the elements go
+- Ex: grid-template-areas: "head head head head"
+                           "box box box side"
+                           "main main main side"
+                           "foot foot foot foot";
+- with this, anywhere you describe the key words with grid-area, the element will be filled
+Ex: .header { grid-area: head; }
+    .main {grid-area: main;}
+    .footer {grid-area: foot;}
+- grid-template-areas must be an exact representation of the grid being used, otherwise it will be completely wrong
+- empty cells cacn be created with a . inside the grid-template-areas value
+  - Ex: grid-template-areas: "head head head .";
+
+- Explicit grid: part of the grid that is explicitly defined
+- Implicit grid: extra or overflow of the explicit grid. if there is more items than there is explicit grid, css will create new rows with the overflow
+  - to style any implicit items: grid-auto-rows
+    - Ex: grid-auto-rows: 80px;
+  - by default, implicit items are created as rows. if columns are needed, use grid-auto-flow: column;
+    - this will change the flow of the rest of the items too
+    - grid-auto-columns only works when the flow is changed to columns
