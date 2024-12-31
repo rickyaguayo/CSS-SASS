@@ -17,9 +17,9 @@ CSS GRID:
 - Attributes:
   - grid-template-rows: allows you to define grid rows
   - grid-template-columns: allows you to define grid columns
-    - inside these, you can use repeat() to quickly define the amount of columns or rows
+    - inside these, you can use repeat() to quickly define duplicate amount of columns or rows
       - Ex: grid-template-rows: repeat(2, 100px); (2 rows that are 100px each)
-    - additional columns/rows can be added at different widths by listing more after the repeat
+    - additional columns/rows can be added at different widths by listing more before/after the repeat
       - Ex: grid-template-columns: repeat(2, 150px) 300px; (2 columns at 150px and 1 at 300px)
   - fr: fractional unit. like flex: 1; it can occupy the remaining space within rows/columns
     - Ex: grid-template-rows: repeat(2, 100px) 1fr; 
@@ -43,6 +43,7 @@ CSS GRID:
     - Ex: grid-column-end: 3;
   - grid-column: shorthand for grid-column-start and grid-column-end
     - Ex: grid-column: 2 / 3; (same as above)
+
   - grid-area: shorthand for grid-row and grid-column
     - syntax: grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end
     - Ex: grid-area: 2 / 2 / 3 / 3; (same as above)
@@ -54,7 +55,7 @@ CSS GRID:
     - Ex: grid-column: 1 / -1; (starts in the first column and spans to the end)
 
 Naming grid lines: 
-- adding names a name surrounded by brackets inside grid-template-column/row names the grid lines
+- adding names surrounded by brackets inside grid-template-column/row names the grid lines
 - grid lines can have more than one name. must be within the same brackets and separated by a space
   - Ex: grid-template-column: [header-start] 100px [header-end footer-start] 200px [footer-end]
 - when using repeat(), you can add names by putting the name inside the repeat function around the width value of the column/row
@@ -75,7 +76,7 @@ Ex: .header { grid-area: head; }
     .main {grid-area: main;}
     .footer {grid-area: foot;}
 - grid-template-areas must be an exact representation of the grid being used, otherwise it will be completely wrong
-- empty cells cacn be created with a . inside the grid-template-areas value
+- empty cells can be created with a . inside the grid-template-areas value
   - Ex: grid-template-areas: "head head head .";
 
 - Explicit grid: part of the grid that is explicitly defined
@@ -85,3 +86,14 @@ Ex: .header { grid-area: head; }
   - by default, implicit items are created as rows. if columns are needed, use grid-auto-flow: column;
     - this will change the flow of the rest of the items too
     - grid-auto-columns only works when the flow is changed to columns
+
+- using align-items and justify-items on the grid container will shrink the grid items to only take up its explicit space and align it depending on the value
+- align-items aligns items horizontally (across the column axis)
+- justify-items aligns items vertically (across the row axis)
+  - defaults for both are stretch
+  - unlike flexbox, you dont need the flex- prefix. (start, end)
+  - Ex: .containter {
+          align-items: start;
+          justify-items: end;
+        }
+- align-self and justify-self works the same as flexbox. used to override any align/justify-item
