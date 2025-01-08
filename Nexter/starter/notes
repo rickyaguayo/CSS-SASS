@@ -86,6 +86,8 @@ Ex: .header { grid-area: head; }
   - by default, implicit items are created as rows. if columns are needed, use grid-auto-flow: column;
     - this will change the flow of the rest of the items too
     - grid-auto-columns only works when the flow is changed to columns
+    - adding dense after the directiong changes the sorting algorithm to fill in any holes in the grid
+      Ex: grid-auto-flow: row dense;
 
 - using align-items and justify-items on the grid container will shrink the grid items to only take up its explicit space and align it depending on the value
 - align-items aligns items horizontally (across the column axis)
@@ -97,3 +99,27 @@ Ex: .header { grid-area: head; }
           justify-items: end;
         }
 - align-self and justify-self works the same as flexbox. used to override any align/justify-item
+- align/justify-items means you will modify the grid items
+- align/justify-content means you will modify the grid tracks
+
+- using min-content as a width for grid-template-rows/columns uses the minimum amount of space the content can take up within its column/row
+  - allows line breaks
+- using max-content as a width for grid-template-rows/columns uses the maximum amount of space the content can take up within its column/row
+  - will not break line if space allows
+Ex: grid-template-rows: max-content 1fr 1fr min-content;
+
+- minmax(min, max) - adds a min and a max height/width according to its arguments
+  Ex: grid-template-rows: repeat(2, minmax(150px, min-content));
+  - this will make 2 rows that are at least 150px high but no bigger that its min-content
+  Ex: grid-template-columns: minmax(200, 300) repeat(3, 1fr);
+  - the first column will stay within 200 and 300 pixels even when the screen resizes
+  - units can be mixed. minmax(200px, 50%)
+
+- auto-fill vs auto-fit
+  - both will create even columns/rows depending on the width of the container
+  - auto-fit will collapse any columns/rows with no content
+  - auto-fix will still give width to columns/rows with no content
+  Ex: grid-template-columns: repeat(auto-fill, 100px) (container is 1000px)
+    - this creates 10 columns, whether there is content inside or not
+  Ex: grid-template-columns: repeat(auto-fit, 100px) (container is 1000px)
+    - this creates 10 columns and any columns with no content will be collapsed
