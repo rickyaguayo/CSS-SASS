@@ -51,7 +51,7 @@ CSS GRID:
 
   - using span inside grid-row or grid-column allows you to define how many rows/columns the item spans
     - Ex: grid-row: 1 / span 2; (same as grid-row: 1 / 3)
-  - using -1 spans to the end of the column/row without knowing how many columns/rows there are
+  - using -1 spans to the end of the explicit column/row without knowing how many columns/rows there are
     - Ex: grid-column: 1 / -1; (starts in the first column and spans to the end)
 
 Naming grid lines: 
