@@ -1,0 +1,125 @@
+CSS GRID:
+- module that brings a 2D grid system to CSS
+- replaces float layouts, using less and more readable and logical CSS and HTML
+- works perfectly with flexbox, which is best to handle 1D components/layouts
+- completely changes the way we envision and build 2D layouts
+- Like flexbox, to create a grid element, you set diplay: grid and all the direct children are grid items
+- there is a column axis (y) and a row axis (x). unlike flexbox, this cannot be changed and will always be like this
+- there can be multiple grid items in the same cell if both are defined to be in the same cell
+
+- Terminology:
+  - grid lines: separate the columns and the rows and are numbered (starting at 1)
+  - gutter (gap): space between the rows and columns
+  - grid track (row or column): one complete row/column
+  - grid area: mixture of both columns and rows
+  - grid cell: one grid item
+
+- Attributes:
+  - grid-template-rows: allows you to define grid rows
+  - grid-template-columns: allows you to define grid columns
+    - inside these, you can use repeat() to quickly define duplicate amount of columns or rows
+      - Ex: grid-template-rows: repeat(2, 100px); (2 rows that are 100px each)
+    - additional columns/rows can be added at different widths by listing more before/after the repeat
+      - Ex: grid-template-columns: repeat(2, 150px) 300px; (2 columns at 150px and 1 at 300px)
+  - fr: fractional unit. like flex: 1; it can occupy the remaining space within rows/columns
+    - Ex: grid-template-rows: repeat(2, 100px) 1fr; 
+    - this will create 2 rows at 100px and one row that will take up whatever remaining space available in the parent container
+  - gap: allows you to define the width of the gaps
+    - shorthand for row-gap and column-gap
+    - if one value is given, both gaps will be the same
+    - if 2 values are given, row first then column
+    Ex: gap: 20px; or gap: 20px 10px;
+
+  - grid-row-start: row line in which you want the element to start at
+    - Ex: grid-row-start: 2;
+  - grid-row-end: row line in which you want the element to finish at
+    - Ex: grid-row-end: 3;
+  - grid-row: shorthand for grid-row-start and grid-row-end
+    - Ex: grid-row: 2 / 3; (same as above)
+
+  - grid-column-start: column line in which you want the element to start at
+    - Ex: grid-column-start: 2;
+  - grid-column-end: column line in which you want the element to finish at
+    - Ex: grid-column-end: 3;
+  - grid-column: shorthand for grid-column-start and grid-column-end
+    - Ex: grid-column: 2 / 3; (same as above)
+
+  - grid-area: shorthand for grid-row and grid-column
+    - syntax: grid-area: grid-row-start / grid-column-start / grid-row-end / grid-column-end
+    - Ex: grid-area: 2 / 2 / 3 / 3; (same as above)
+    - kinda confusing syntax
+
+  - using span inside grid-row or grid-column allows you to define how many rows/columns the item spans
+    - Ex: grid-row: 1 / span 2; (same as grid-row: 1 / 3)
+  - using -1 spans to the end of the column/row without knowing how many columns/rows there are
+    - Ex: grid-column: 1 / -1; (starts in the first column and spans to the end)
+
+Naming grid lines: 
+- adding names surrounded by brackets inside grid-template-column/row names the grid lines
+- grid lines can have more than one name. must be within the same brackets and separated by a space
+  - Ex: grid-template-column: [header-start] 100px [header-end footer-start] 200px [footer-end]
+- when using repeat(), you can add names by putting the name inside the repeat function around the width value of the column/row
+- Ex: grid-template-column: repeat(3, [col-start] 1fr [col-end]), 200px [grid-end];
+  - this creates a nameset with numbers:
+    - col-start 1, col-start 2, col-start 3
+    - col-end 1, col-end 2, col-end 3
+    - Ex: .header { grid-column: col-start 1 / grid-end; }
+
+Naming grid areas:
+- with the grid-template-areas attribute, you can name areas to place where the elements go
+- Ex: grid-template-areas: "head head head head"
+                           "box box box side"
+                           "main main main side"
+                           "foot foot foot foot";
+- with this, anywhere you describe the key words with grid-area, the element will be filled
+Ex: .header { grid-area: head; }
+    .main {grid-area: main;}
+    .footer {grid-area: foot;}
+- grid-template-areas must be an exact representation of the grid being used, otherwise it will be completely wrong
+- empty cells can be created with a . inside the grid-template-areas value
+  - Ex: grid-template-areas: "head head head .";
+
+- Explicit grid: part of the grid that is explicitly defined
+- Implicit grid: extra or overflow of the explicit grid. if there is more items than there is explicit grid, css will create new rows with the overflow
+  - to style any implicit items: grid-auto-rows
+    - Ex: grid-auto-rows: 80px;
+  - by default, implicit items are created as rows. if columns are needed, use grid-auto-flow: column;
+    - this will change the flow of the rest of the items too
+    - grid-auto-columns only works when the flow is changed to columns
+    - adding dense after the direction changes the sorting algorithm to fill in any holes in the grid
+      Ex: grid-auto-flow: row dense;
+
+- using align-items and justify-items on the grid container will shrink the grid items to only take up its explicit space and align it depending on the value
+- align-items aligns items horizontally (across the column axis)
+- justify-items aligns items vertically (across the row axis)
+  - defaults for both are stretch
+  - unlike flexbox, you dont need the flex- prefix. (start, end)
+  - Ex: .containter {
+          align-items: start;
+          justify-items: end;
+        }
+- align-self and justify-self works the same as flexbox. used to override any align/justify-item
+- align/justify-items means you will modify the grid items
+- align/justify-content means you will modify the grid tracks
+
+- using min-content as a width for grid-template-rows/columns uses the minimum amount of space the content can take up within its column/row
+  - allows line breaks
+- using max-content as a width for grid-template-rows/columns uses the maximum amount of space the content can take up within its column/row
+  - will not break line if space allows
+Ex: grid-template-rows: max-content 1fr 1fr min-content;
+
+- minmax(min, max) - adds a min and a max height/width according to its arguments
+  Ex: grid-template-rows: repeat(2, minmax(150px, min-content));
+  - this will make 2 rows that are at least 150px high but no bigger that its min-content
+  Ex: grid-template-columns: minmax(200, 300) repeat(3, 1fr);
+  - the first column will stay within 200 and 300 pixels even when the screen resizes
+  - units can be mixed. minmax(200px, 50%)
+
+- auto-fill vs auto-fit
+  - both will create even columns/rows depending on the width of the container
+  - auto-fit will collapse any columns/rows with no content
+  - auto-fill will still give width to columns/rows with no content
+  Ex: grid-template-columns: repeat(auto-fill, 100px) (container is 1000px)
+    - this creates 10 columns, whether there is content inside or not
+  Ex: grid-template-columns: repeat(auto-fit, 100px) (container is 1000px)
+    - this creates 10 columns and any columns with no content will be collapsed
