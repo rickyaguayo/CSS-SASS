@@ -123,3 +123,5 @@ Ex: grid-template-rows: max-content 1fr 1fr min-content;
     - this creates 10 columns, whether there is content inside or not
   Ex: grid-template-columns: repeat(auto-fit, 100px) (container is 1000px)
     - this creates 10 columns and any columns with no content will be collapsed
+
+- images will not fill grid areas even if you specify it due to its aspect ratio
