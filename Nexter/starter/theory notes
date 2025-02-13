@@ -125,3 +125,8 @@ Ex: grid-template-rows: max-content 1fr 1fr min-content;
     - this creates 10 columns and any columns with no content will be collapsed
 
 - images will not fill grid areas even if you specify it due to its aspect ratio
+- to help images fit in a grid for a gallery with different size images, you can put each images into a <figure> element and give the image: object-fit: cover;.
+
+
+MISC NOTES:
+- when using object fit, you must specify the widht and the height
