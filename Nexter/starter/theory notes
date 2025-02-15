@@ -21,6 +21,8 @@ CSS GRID:
       - Ex: grid-template-rows: repeat(2, 100px); (2 rows that are 100px each)
     - additional columns/rows can be added at different widths by listing more before/after the repeat
       - Ex: grid-template-columns: repeat(2, 150px) 300px; (2 columns at 150px and 1 at 300px)
+    - multiple tracks can be used within one repeat function
+      - Ex: repeat(3, 100px 150px)
   - fr: fractional unit. like flex: 1; it can occupy the remaining space within rows/columns
     - Ex: grid-template-rows: repeat(2, 100px) 1fr; 
     - this will create 2 rows at 100px and one row that will take up whatever remaining space available in the parent container
