@@ -23,6 +23,8 @@ CSS GRID:
       - Ex: grid-template-columns: repeat(2, 150px) 300px; (2 columns at 150px and 1 at 300px)
     - multiple tracks can be used within one repeat function
       - Ex: repeat(3, 100px 150px)
+  - grid-template: shorthand for grid-template-rows / grid-template-columns
+    Ex: grid-template: repeat(3, 100px) / repeat(2, 50px); 
   - fr: fractional unit. like flex: 1; it can occupy the remaining space within rows/columns
     - Ex: grid-template-rows: repeat(2, 100px) 1fr; 
     - this will create 2 rows at 100px and one row that will take up whatever remaining space available in the parent container
@@ -132,3 +134,8 @@ Ex: grid-template-rows: max-content 1fr 1fr min-content;
 
 MISC NOTES:
 - when using object fit, you must specify the widht and the height
+- flexbox and grid both ignore certain properties:
+  - display: inline-block
+  - display: table-cell
+  - floats
+  - vertical align
